@@ -72,6 +72,7 @@ const PurchaseTrees = () => {
 
   const [vehicles, setVehicles] = useState([]);
 
+  //resolve both queries - new object is returned with model_name and make_name - then after ALL promises are resolved, setVehicles
   useEffect(() => {
     if (data) {
       const fetchModelsAndMakes = async () => {
@@ -115,6 +116,7 @@ const PurchaseTrees = () => {
       setSuccessNote(
         `Successfully purchased ${numberOfTrees} trees for vehicle ${vehicleId}` //
       );
+      //window.location.reload(); // refresh
     } catch (error) {
       console.error(error);
     }

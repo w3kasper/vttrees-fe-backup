@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import client from "../lib/apolloClient";
-import { TextField, Button, Box, Paper, Typography } from "@mui/material";
+import { TextField, Button, Box, Paper, Typography } from "comp-library-vt-vp";
 
 const CREATE_MAKE_MUTATION = gql`
   mutation CreateMake($make_name: String!) {

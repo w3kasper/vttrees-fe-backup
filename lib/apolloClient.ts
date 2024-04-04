@@ -13,7 +13,8 @@ import Cookies from 'js-cookie';
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3000/graphql', // replace with your GraphQL server URI
+  //uri: 'http://localhost:3000/graphql', // replace with your GraphQL server URI
+  uri: 'http://192.168.68.105:3000/graphql', // replace with your GraphQL server URI - this was used to remote in
 });
 
 // Middleware that adds the token to the headers

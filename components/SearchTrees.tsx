@@ -30,6 +30,7 @@ export default function Search() {
     useLazyQuery<SearchMakesAndModelsResponse>(SEARCH_MAKES_AND_MODELS_QUERY, {
       client,
     });
+  //useLazyQuery waits until you call the function to execute the query
 
   if (loading) return <p>Loading...</p>;
   if (error) {

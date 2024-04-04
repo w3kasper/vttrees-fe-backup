@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 
 import { logout } from "../lib/redux/authSlice"; // adjust the import path if necessary
 import { useDispatch } from "react-redux";
+import ViewAllVehicles from "./ViewVehicles";
 
 const AdminPage = ({
   username,
@@ -69,6 +70,7 @@ const AdminPage = ({
       <CreateMake />
       <CreateModel />
       <UpdateRatio />
+      {/* <ViewAllVehicles /> */}
     </>
   );
 };
