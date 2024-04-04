@@ -9,6 +9,12 @@ const theme = createTheme({
     background: {
         default: '#f1f5f0', // This is a light gray color. Replace with your preferred background color.
       },
+      text: {
+        primary: '#373b34', // dark gray
+      },
+  },
+  typography: {
+    fontFamily: 'Poppins, Arial, sans-serif',
   },
 });
 

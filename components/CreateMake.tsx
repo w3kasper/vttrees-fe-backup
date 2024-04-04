@@ -40,24 +40,6 @@ export default function CreateMake() {
   }
 
   return (
-    // <div>
-    //   <div>Create Make</div>
-    //   <form onSubmit={handleSubmit}>
-    //     <input
-    //       value={makeName}
-    //       onChange={(e) => setMakeName(e.target.value)}
-    //       placeholder="Make Name"
-    //     />
-    //     <button type="submit">Create Make</button>
-    //   </form>
-    //   {data?.createMake && (
-    //     <div>
-    //       <p>Created Make:</p>
-    //       <p>ID: {data.createMake.make_id}</p>
-    //       <p>Name: {data.createMake.make_name}</p>
-    //     </div>
-    //   )}
-    // </div>
     <Box
       sx={{
         display: "flex",

@@ -7,20 +7,25 @@ import PurchaseTrees from "./PurchaseTrees";
 import { Box, Button } from "comp-library-vt-vp";
 import Image from "next/image";
 
+import Cookies from "js-cookie";
+import { logout } from "../lib/redux/authSlice"; // adjust the import path if necessary
+import { useDispatch } from "react-redux";
+
 const UserPage = ({
   username,
   isAdmin,
   userId,
+  isLoggedIn,
 }: {
   username: string;
   isAdmin: boolean;
   userId: number;
+  isLoggedIn: boolean;
 }) => {
+  const dispatch = useDispatch();
+  console.log("UserPage", username, isAdmin, userId, isLoggedIn);
   return (
     <>
-      {/* <div>
-        User Page {username} {isAdmin} {userId}
-      </div> */}
       <Box
         sx={{
           position: "absolute",
@@ -43,7 +48,12 @@ const UserPage = ({
         {username} {isAdmin}{" "}
         <Button
           variant="outlined"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            Cookies.remove("token");
+            isLoggedIn = false;
+            dispatch(logout());
+            //window.location.reload();
+          }}
           sx={{ borderRadius: 10, py: 1 }} // Set the border radius to 10
         >
           Logout
@@ -51,9 +61,7 @@ const UserPage = ({
       </Box>
       <SearchTrees />
       <LeaderBoard />
-
       <UploadVehicle />
-
       <PurchaseTrees />
     </>
   );

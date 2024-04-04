@@ -98,42 +98,6 @@ export default function CreateModel() {
   }
 
   return (
-    // <div>
-    //   <div>Create Model</div>
-    //   <form onSubmit={handleSubmit}>
-    //     <select
-    //       value={selectedMakeId}
-    //       onChange={(e) => setSelectedMakeId(e.target.value)}
-    //     >
-    //       <option value="">Select a make</option>
-    //       {data?.getMakes.map(({ make_id, make_name }) => (
-    //         <option key={make_id} value={make_id}>
-    //           {make_name}
-    //         </option>
-    //       ))}
-    //     </select>
-    //     <input
-    //       value={modelName}
-    //       onChange={(e) => setModelName(e.target.value)}
-    //       placeholder="Model Name"
-    //     />
-    //     <input
-    //       value={offsetAmount}
-    //       onChange={(e) => setOffsetAmount(e.target.value)}
-    //       placeholder="Offset Amount"
-    //       type="number"
-    //     />
-    //     <button type="submit">Create Model</button>
-    //   </form>
-    //   {createModelData?.createModel && (
-    //     <div>
-    //       <p>Created Model:</p>
-    //       <p>Make ID: {createModelData.createModel.make_id}</p>
-    //       <p>Name: {createModelData.createModel.model_name}</p>
-    //       <p>Offset Amount: {createModelData.createModel.offset_amount}</p>
-    //     </div>
-    //   )}
-    // </div>
     <Box
       sx={{
         display: "flex",

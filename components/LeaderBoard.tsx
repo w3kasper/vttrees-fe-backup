@@ -3,10 +3,6 @@ import client from "../lib/apolloClient";
 import Image from "next/image";
 import { TextField, Button, Box, Paper, Typography } from "comp-library-vt-vp";
 
-// import { useEffect } from 'react';
-// import { useAppSelector, useAppDispatch } from '../lib/redux/hooks';
-// import { refreshLeaderboard, setLeaderboardData } from '../lib/redux/leaderboardSlice';
-
 type MakeAndModel = {
   make_name: string;
   model_name: string;
@@ -43,33 +39,29 @@ const LeaderBoard = () => {
     ({ total_trees }) => total_trees && total_trees > 0
   );
 
-  //   const dispatch = useAppDispatch();
-  // const refresh = useAppSelector((state) => state.leaderboard.refresh);
-
-  // useEffect(() => {
-  //   if (refresh) {
-  //     // Fetch new data here and update the leaderboard data in the store
-  //     const newData = setLeaderboardData(); // replace this with your data fetching logic
-  //     dispatch(setLeaderboardData(newData));
-  //     dispatch(refreshLeaderboard()); // Reset the refresh state after fetching
-  //   }
-  // }, [refresh, dispatch]);
-
   return (
     <>
-      {/* <div>Leaderboard</div>
-      <div>
-        {validMakesAndModels?.map(({ make_name, model_name, total_trees }) => (
-          <div key={`${make_name}-${model_name}`}>
-            <div>
-              {make_name} {model_name} Total Trees: {total_trees}
-            </div>
-          </div>
-        ))}
-      </div> */}
-      <Typography variant="h4" component="div" align="center">
-        -Leader Board-
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 3,
+          marginBottom: 3,
+        }}
+      >
+        <Image src="/carlogo.svg" alt="Icon" width={50} height={50} />
+        <Typography variant="h4" component="div" align="center">
+          &nbsp;- Leader Board -&nbsp;
+        </Typography>
+        <Image
+          src="/carlogo.svg"
+          alt="Icon"
+          width={50}
+          height={50}
+          style={{ transform: "scaleX(-1)" }}
+        />
+      </Box>
       <Box
         sx={{
           display: "flex",

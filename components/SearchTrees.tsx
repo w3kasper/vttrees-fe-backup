@@ -38,37 +38,6 @@ export default function Search() {
   }
 
   return (
-    // <div>
-    //   <input
-    //     value={makeName}
-    //     onChange={(e) => setMakeName(e.target.value)}
-    //     placeholder="Search by make"
-    //   />
-    //   <input
-    //     value={modelName}
-    //     onChange={(e) => setModelName(e.target.value)}
-    //     placeholder="Search by model"
-    //   />
-    //   <button
-    //     onClick={() => {
-    //       // Execute the query when the button is clicked
-    //       executeSearch({
-    //         variables: { make_name: makeName, model_name: modelName },
-    //       });
-    //     }}
-    //   >
-    //     Search
-    //   </button>
-    //   {data?.searchMakesAndModels.map(
-    //     ({ make_name, model_name, total_trees }) => (
-    //       <div key={`${make_name}-${model_name}`}>
-    //         <div>Make: {make_name}</div>
-    //         <div>Model: {model_name}</div>
-    //         <div>Total trees: {total_trees}</div>
-    //       </div>
-    //     )
-    //   )}
-    // </div>
     <Box
       sx={{
         display: "flex",

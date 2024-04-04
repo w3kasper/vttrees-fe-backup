@@ -3,6 +3,7 @@ import { useMutation, gql } from "@apollo/client";
 import { useAppDispatch } from "../lib/redux/hooks";
 import { login } from "../lib/redux/authSlice";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 import { TextField, Button, Box } from "comp-library-vt-vp";
 
@@ -73,69 +74,44 @@ const LoginForm = () => {
           <p>Is Admin: {isAdmin ? "Yes" : "No"}</p>
         </div>
       ) : (
-        // <Box
-        //   sx={{
-        //     display: "flex",
-        //     justifyContent: "center",
-        //     alignItems: "center",
-        //     height: "100vh", // or '100%' depending on the parent's height
-        //   }}
-        // >
-        //   <form onSubmit={handleSubmit}>
-        //     <div>
-        //       <input
-        //         type="text"
-        //         placeholder="Username"
-        //         value={username}
-        //         onChange={(e) => setUsername(e.target.value)}
-        //       />
-        //     </div>
-        //     <div>
-        //       <input
-        //         type="password"
-        //         placeholder="Password"
-        //         value={password}
-        //         onChange={(e) => setPassword(e.target.value)}
-        //       />
-        //     </div>
-        //     <button type="submit">Login</button>
-        //   </form>
-        // </Box>
-        <form onSubmit={handleSubmit}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2, // spacing between elements
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-              maxWidth: 400, // or any width you want
-              m: "auto",
-              height: "100vh",
-            }}
-          >
-            <TextField
-              variant="outlined"
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              fullWidth
-            />
-            <TextField
-              variant="outlined"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              fullWidth
-            />
-            <Button variant="contained" type="submit" fullWidth>
-              Login
-            </Button>
-          </Box>
-        </form>
+        <>
+          <form onSubmit={handleSubmit}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2, // spacing between elements
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                maxWidth: 400, // or any width you want
+                m: "auto",
+                height: "100vh",
+              }}
+            >
+              <Image src="/carlogo.svg" alt="Icon" width={200} height={200} />
+              <TextField
+                variant="outlined"
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                fullWidth
+              />
+              <TextField
+                variant="outlined"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                fullWidth
+              />
+              <Button variant="contained" type="submit" fullWidth>
+                Login
+              </Button>
+            </Box>
+          </form>
+        </>
       )}
     </div>
   );
