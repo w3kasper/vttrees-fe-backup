@@ -9,6 +9,7 @@
 
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Cookies from 'js-cookie';
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -18,7 +19,8 @@ const httpLink = createHttpLink({
 // Middleware that adds the token to the headers
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
+  //const token = localStorage.getItem('token');
+  const token = Cookies.get('token');
   // return the headers to the context so httpLink can read them
   return {
     headers: {

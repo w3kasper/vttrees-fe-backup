@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { useQuery, gql, useMutation } from "@apollo/client";
 import client from "../lib/apolloClient";
+import {
+  TextField,
+  Button,
+  Box,
+  Paper,
+  Typography,
+  Select,
+  MenuItem,
+} from "comp-library-vt-vp";
 
 const GET_ALL_MAKES_WITH_MODELS_QUERY = gql`
   query {
@@ -81,83 +90,206 @@ export default function MakesAndModels() {
   );
 
   return (
-    <div>
-      <div>Update Ratio</div>
-      <select
-        value={selectedMakeId ?? ""}
-        onChange={(e) => {
-          setSelectedMakeId(Number(e.target.value));
-          setSelectedModelId(null);
-          setUpdateMessage(null);
-        }}
-      >
-        <option value="">Select a make</option>
-        {data?.allMakesWithModels.map(({ make_id, make_name }) => (
-          <option key={make_id} value={make_id}>
-            {make_name}
-          </option>
-        ))}
-      </select>
+    // <div>
+    //   <div>Update Ratio</div>
+    //   <select
+    //     value={selectedMakeId ?? ""}
+    //     onChange={(e) => {
+    //       setSelectedMakeId(Number(e.target.value));
+    //       setSelectedModelId(null);
+    //       setUpdateMessage(null);
+    //     }}
+    //   >
+    //     <option value="">Select a make</option>
+    //     {data?.allMakesWithModels.map(({ make_id, make_name }) => (
+    //       <option key={make_id} value={make_id}>
+    //         {make_name}
+    //       </option>
+    //     ))}
+    //   </select>
 
-      {selectedMake && (
-        <select
-          value={selectedModelId ?? ""}
+    //   {selectedMake && (
+    //     <select
+    //       value={selectedModelId ?? ""}
+    //       onChange={(e) => {
+    //         setSelectedModelId(Number(e.target.value));
+    //         setUpdateMessage(null);
+    //       }}
+    //     >
+    //       <option value="">Select a model</option>
+    //       {selectedMake.carmodels.map(({ model_id, model_name }) => (
+    //         <option key={model_id} value={model_id}>
+    //           {model_name}
+    //         </option>
+    //       ))}
+    //     </select>
+    //   )}
+
+    //   {selectedModel && (
+    //     <div>
+    //       <span>{selectedModel.model_name}</span>
+    //       <input
+    //         type="number"
+    //         value={
+    //           inputValues[selectedModel.model_id] ?? selectedModel.offset_amount
+    //         }
+    //         onChange={(e) => {
+    //           setInputValues({
+    //             ...inputValues,
+    //             [selectedModel.model_id]: Number(e.target.value),
+    //           });
+    //         }}
+    //       />
+    //       <button
+    //         onClick={async () => {
+    //           if (
+    //             inputValues[selectedModel.model_id] !== undefined &&
+    //             selectedMake
+    //           ) {
+    //             await updateModel({
+    //               variables: {
+    //                 model_id: selectedModel.model_id,
+    //                 make_id: selectedMake.make_id,
+    //                 model_name: selectedModel.model_name,
+    //                 offset_amount: inputValues[selectedModel.model_id],
+    //               },
+    //             });
+    //             setUpdateMessage(
+    //               `Model ${selectedModel.model_name} updated to ${
+    //                 inputValues[selectedModel.model_id]
+    //               }`
+    //             );
+    //           }
+    //         }}
+    //       >
+    //         Update
+    //       </button>
+    //       {updateMessage && <div>{updateMessage}</div>}
+    //     </div>
+    //   )}
+    // </div>
+
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 4,
+      }}
+    >
+      <Typography variant="h6" component="div" align="center">
+        -Update Ratio-
+      </Typography>
+      <Box
+        component="form"
+        sx={{
+          width: "50%",
+          display: "flex",
+          gap: 2,
+          flexDirection: "column",
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <Select
+          value={selectedMakeId ?? ""}
           onChange={(e) => {
-            setSelectedModelId(Number(e.target.value));
+            setSelectedMakeId(Number(e.target.value));
+            setSelectedModelId(null);
             setUpdateMessage(null);
           }}
+          variant="outlined"
+          fullWidth
         >
-          <option value="">Select a model</option>
-          {selectedMake.carmodels.map(({ model_id, model_name }) => (
-            <option key={model_id} value={model_id}>
-              {model_name}
-            </option>
+          <MenuItem value="">
+            <em>Select a make</em>
+          </MenuItem>
+          {data?.allMakesWithModels.map(({ make_id, make_name }) => (
+            <MenuItem key={make_id} value={make_id}>
+              {make_name}
+            </MenuItem>
           ))}
-        </select>
-      )}
+        </Select>
 
-      {selectedModel && (
-        <div>
-          <span>{selectedModel.model_name}</span>
-          <input
-            type="number"
-            value={
-              inputValues[selectedModel.model_id] ?? selectedModel.offset_amount
-            }
+        {selectedMake && (
+          <Select
+            value={selectedModelId ?? ""}
             onChange={(e) => {
-              setInputValues({
-                ...inputValues,
-                [selectedModel.model_id]: Number(e.target.value),
-              });
+              setSelectedModelId(Number(e.target.value));
+              setUpdateMessage(null);
             }}
-          />
-          <button
-            onClick={async () => {
-              if (
-                inputValues[selectedModel.model_id] !== undefined &&
-                selectedMake
-              ) {
-                await updateModel({
-                  variables: {
-                    model_id: selectedModel.model_id,
-                    make_id: selectedMake.make_id,
-                    model_name: selectedModel.model_name,
-                    offset_amount: inputValues[selectedModel.model_id],
-                  },
-                });
-                setUpdateMessage(
-                  `Model ${selectedModel.model_name} updated to ${
-                    inputValues[selectedModel.model_id]
-                  }`
-                );
-              }
+            variant="outlined"
+            fullWidth
+          >
+            <MenuItem value="">
+              <em>Select a model</em>
+            </MenuItem>
+            {selectedMake.carmodels.map(({ model_id, model_name }) => (
+              <MenuItem key={model_id} value={model_id}>
+                {model_name}
+              </MenuItem>
+            ))}
+          </Select>
+        )}
+
+        {selectedModel && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
             }}
           >
-            Update
-          </button>
-          {updateMessage && <div>{updateMessage}</div>}
-        </div>
-      )}
-    </div>
+            <Typography variant="body1">{selectedModel.model_name}</Typography>
+            <TextField
+              type="number"
+              value={
+                inputValues[selectedModel.model_id] ??
+                selectedModel.offset_amount
+              }
+              onChange={(e) => {
+                setInputValues({
+                  ...inputValues,
+                  [selectedModel.model_id]: Number(e.target.value),
+                });
+              }}
+              variant="outlined"
+              fullWidth
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={async () => {
+                if (
+                  inputValues[selectedModel.model_id] !== undefined &&
+                  selectedMake
+                ) {
+                  await updateModel({
+                    variables: {
+                      model_id: selectedModel.model_id,
+                      make_id: selectedMake.make_id,
+                      model_name: selectedModel.model_name,
+                      offset_amount: inputValues[selectedModel.model_id],
+                    },
+                  });
+                  setUpdateMessage(
+                    `Model ${selectedModel.model_name} updated to ${
+                      inputValues[selectedModel.model_id]
+                    }`
+                  );
+                }
+              }}
+            >
+              Update
+            </Button>
+            {updateMessage && (
+              <Typography variant="body1">{updateMessage}</Typography>
+            )}
+          </Box>
+        )}
+      </Box>
+    </Box>
   );
 }
